@@ -1,0 +1,10 @@
+{
+  "name": "ग्रुप ग्रामपंचायत कोंढाण",
+  "short_name": "GP कोंढाण",
+  "description": "ग्रुप ग्रामपंचायत कोंढाण नागरिक माहिती पोर्टल",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0d9488",
+  "lang": "mr"
+}
