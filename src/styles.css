@@ -341,11 +341,12 @@ button { cursor: pointer; }
   justify-content: center;
   padding: 20px;
 }
+/* GPU-friendly: only opacity + transform */
 .lightbox-in {
-  animation: lbFadeIn 0.3s ease forwards;
+  animation: lbFadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .lightbox-out {
-  animation: lbFadeOut 0.28s ease forwards;
+  animation: lbFadeOut 0.25s ease-in forwards;
 }
 @keyframes lbFadeIn {
   from { opacity: 0; }
@@ -366,12 +367,13 @@ button { cursor: pointer; }
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  will-change: opacity, transform;
 }
 .lb-img-in {
-  animation: imgFadeIn 0.35s ease forwards;
+  animation: imgFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .lb-img-out {
-  animation: imgFadeOut 0.18s ease forwards;
+  animation: imgFadeOut 0.2s ease-in forwards;
 }
 @keyframes imgFadeIn {
   from { opacity: 0; transform: scale(0.96); }
@@ -384,11 +386,29 @@ button { cursor: pointer; }
 
 /* Gallery grid stagger fade-in */
 .gallery-item {
-  animation: cardFadeUp 0.45s ease both;
+  animation: cardFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @keyframes cardFadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-in, .lightbox-out,
+  .lb-img-in, .lb-img-out,
+  .gallery-item,
+  .hero-slide {
+    animation: none !important;
+    transition: none !important;
+  }
+  .gallery-item:hover,
+  .gallery-item:hover img,
+  .feature-card:hover,
+  .member-card:hover,
+  .quick-card:hover {
+    transform: none !important;
+  }
 }
 .lightbox-caption {
   color: #e2e8f0;

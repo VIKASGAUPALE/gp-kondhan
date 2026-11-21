@@ -180,7 +180,7 @@ export function Gallery() {
     setTimeout(() => {
       setLightbox(null);
       setClosing(false);
-    }, 280);
+    }, 250);
   };
 
   const currentIdx = lightbox ? galleryImages.findIndex((g) => g.id === lightbox.id) : -1;
@@ -190,7 +190,7 @@ export function Gallery() {
     setTimeout(() => {
       setLightbox(img);
       setImgFade(true);
-    }, 180);
+    }, 200);
   };
 
   const prev = () => {
